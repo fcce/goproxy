@@ -1,6 +1,6 @@
 # Introduction
 
-[![GoDoc](https://godoc.org/github.com/elazarl/goproxy?status.svg)](https://godoc.org/github.com/elazarl/goproxy)
+[![GoDoc](https://godoc.org/github.com/fcce/goproxy?status.svg)](https://godoc.org/github.com/fcce/goproxy)
 [![Join the chat at https://gitter.im/elazarl/goproxy](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/elazarl/goproxy?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 ![Status](https://github.com/elazarl/goproxy/workflows/Go/badge.svg)
 
@@ -49,7 +49,7 @@ To get a taste of `goproxy`, a basic HTTP/HTTPS transparent proxy
 package main
 
 import (
-    "github.com/elazarl/goproxy"
+    "github.com/fcce/goproxy"
     "log"
     "net/http"
 )
@@ -107,22 +107,22 @@ See additional examples in the examples directory.
 There are 3 kinds of useful handlers to manipulate the behavior, as follows:
 
 ```go
-// handler called after receiving HTTP CONNECT from the client, and before proxy establish connection 
+// handler called after receiving HTTP CONNECT from the client, and before proxy establish connection
 // with destination host
 httpsHandlers   []HttpsHandler
-    
+
 // handler called before proxy send HTTP request to destination host
-reqHandlers     []ReqHandler 
-    
-// handler called after proxy receives HTTP Response from destination host, and before proxy forward 
+reqHandlers     []ReqHandler
+
+// handler called after proxy receives HTTP Response from destination host, and before proxy forward
 // the Response to the client.
-respHandlers    []RespHandler 
+respHandlers    []RespHandler
 ```
 
 Depending on what you want to manipulate, the ways to add handlers to each handler list are:
 
 ```go
-// Add handlers to httpsHandlers 
+// Add handlers to httpsHandlers
 proxy.OnRequest(Some ReqConditions).HandleConnect(YourHandlerFunc())
 
 // Add handlers to reqHandlers
@@ -138,7 +138,7 @@ For example:
 // This rejects the HTTPS request to *.reddit.com during HTTP CONNECT phase
 proxy.OnRequest(goproxy.ReqHostMatches(regexp.MustCompile("reddit.*:443$"))).HandleConnect(goproxy.RejectConnect)
 
-// This will NOT reject the HTTPS request with URL ending with gif, due to the fact that proxy 
+// This will NOT reject the HTTPS request with URL ending with gif, due to the fact that proxy
 // only got the URL.Hostname and URL.Port during the HTTP CONNECT phase if the scheme is HTTPS, which is
 // quiet common these days.
 proxy.OnRequest(goproxy.UrlMatches(regexp.MustCompile(`.*gif$`))).HandleConnect(goproxy.RejectConnect)
@@ -150,8 +150,8 @@ proxy.OnRequest(goproxy.UrlMatches(regexp.MustCompile(`.*gif$`))).Do(YourReqHand
 # What's New
 
 1. Ability to `Hijack` CONNECT requests. See
-[the eavesdropper example](https://github.com/elazarl/goproxy/blob/master/examples/goproxy-eavesdropper/main.go#L27)
-2. Transparent proxy support for http/https including MITM certificate generation for TLS.  See the [transparent example.](https://github.com/elazarl/goproxy/tree/master/examples/goproxy-transparent)
+[the eavesdropper example](https://github.com/fcce/goproxy/blob/master/examples/goproxy-eavesdropper/main.go#L27)
+2. Transparent proxy support for http/https including MITM certificate generation for TLS.  See the [transparent example.](https://github.com/fcce/goproxy/tree/master/examples/goproxy-transparent)
 
 # License
 
