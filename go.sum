@@ -1,3 +1,3 @@
-github.com/fcce/goproxy/ext v0.0.0-20190711103511-473e67f1d7d2 h1:dWB6v3RcOy03t/bUadywsbyrQwCqZeNIEX6M1OtSZOM=
-github.com/fcce/goproxy/ext v0.0.0-20190711103511-473e67f1d7d2/go.mod h1:gNh8nYJoAm43RfaxurUnxr+N1PwuFV3ZMl/efxlIlY8=
+github.com/fcce/goproxy/ext v0.0.0-20200415032457-f41e2072004c h1:8Nt6l/FXlQ7ZUwDGGEmvtC3rFIpv11S/a+btKwRksSs=
+github.com/fcce/goproxy/ext v0.0.0-20200415032457-f41e2072004c/go.mod h1:yQvj3+pjsvnfw6xhZchhZwA0us0c1r2tlqpE2NajbtI=
 github.com/rogpeppe/go-charset v0.0.0-20180617210344-2471d30d28b4/go.mod h1:qgYeAmZ5ZIpBWTGllZSQnw97Dj+woV0toclVaRGI8pc=
